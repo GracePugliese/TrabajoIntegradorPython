@@ -8,7 +8,7 @@
 
 class Cuenta:
 
-    def __intit__(self,titular, cantidad):
+    def  __init__(self,titular='',cantidad=0):      
         self._titular=titular
         self._cantidad=cantidad
 
@@ -16,33 +16,46 @@ class Cuenta:
        return self._titular
     
     def get_cantidad(self):
-        return self._cuenta
+        return self._cantidad
     
     def set_titular(self, titular):
         self._titular=titular
     
-    def set_cuenta(self,cta):
-        self.set_cuenta=cta
+    def set_cantidad(self,cantidad):
+        self.set_cantidad=cantidad
 
-    def retirar_dinero(self, cant):
-        return self._cantidad-cant
+    def __str__(self):
+            return "{} {}".format( self._titular, self._cantidad)
+
+    def retirar_dinero(self):
+         print("Debe retirar una cantidad \n")
+         cant=int(input())      
+         self._cantidad-=cant
+         return self._cantidad
     
-    def ingresar_dinero(self,cant):
-        return self._cantidad+cant
+    def ingresar_dinero(self):
+        print("Debe ingresar una cantidad \n")
+        cant=int(input())      
+        self._cantidad+=cant
+        return self._cantidad
+       
     
-    def pedir_titular(self):
-     
-         while not titular:
-            print("Debe ingresar un titular\n")
+    def pedir_titular(self):    
+        sinTitular= True
+        while sinTitular: 
+            print ("Ingrese un titular.") 
             titular=input()
+            self.set_titular(titular)
+            if titular != "":
+               sinTitular =False
+       
 
     def mostrar_informacion(self):
         print(f"El titular es {self._titular}\n y el saldo de la cuenta es {self._cantidad}\n")
 
 cta = Cuenta()
-print("Debe ingresar un titular\n")
 cta.pedir_titular()
-cta.ingresar_dinero(5000)
+cta.ingresar_dinero()
+cta.retirar_dinero()
 cta.mostrar_informacion()
-
 		
