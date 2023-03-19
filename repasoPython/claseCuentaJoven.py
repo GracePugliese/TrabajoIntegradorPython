@@ -40,7 +40,12 @@ class cuentaJoven(Cuenta, Persona):
             print("Titular no valido")
 
 
-ctajoven= cuentaJoven(cuentaJoven.pedir_titular, cuentaJoven.retirar_dinero, bonificacion=15)
+
+ctajoven= cuentaJoven(Cuenta,Persona, bonificacion=15)
+ctajoven.pedir_titular()
+ctajoven.es_titular_valido()
+ctajoven.mostrar_informacion()
+
 
 
 
